@@ -26,9 +26,8 @@ public class MemberController {
         // vi skickar med listan av medlemmar till vyn
         model.addAttribute("siteName", "Medlemssidan");
         model.addAttribute("members", members);
-
-        System.out.println("Memberpage" + members);
         
+        System.out.println("Memberpage" + members);
         return "memberpage";
     }
 

@@ -17,7 +17,10 @@
     <h2>Våra medlemar</h2>
     <div>
       <ul>
-        <li th:each="item : ${members}" th:text="${item.email}"></li>
+        <li th:each="item : ${members}">
+        <span>Medlem: <strong th:text="${item.name}"></strong></span> <br>
+        <span th:text="${item.email}"> Email:</span> <br>
+        </li>
       </ul>
     </div>
   </main>
