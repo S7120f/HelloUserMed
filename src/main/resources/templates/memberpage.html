@@ -20,9 +20,9 @@
     <div>
       <ul>
         <li th:id="${item.id}" th:each="item : ${members}">
-        <span>Namn: <strong th:text="${item.name}"></strong></span> <br>
+        <span> <a th:href="@{/remove-item/{itemId}(itemId=${item.id})}">[X]</a> Namn: <strong th:text="${item.name}"></strong></span> <br>
         <span>E-post: <strong th:text="${item.email}"></strong></span> <br>
-
+        
         </li>
       </ul>
     </div>
