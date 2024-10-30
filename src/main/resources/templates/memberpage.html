@@ -10,6 +10,8 @@
 <body>
   <header>
     <h1 th:text="${siteName}"></h1>
+    <a th:href="@{/}">Hem</a>
+    <a th:href="@{/formpage}">Formulär</a>
   </header>
     
 
@@ -17,9 +19,10 @@
     <h2>Våra medlemar</h2>
     <div>
       <ul>
-        <li th:each="item : ${members}">
-        <span>Medlem: <strong th:text="${item.name}"></strong></span> <br>
-        <span th:text="${item.email}"> Email:</span> <br>
+        <li th:id="${item.id}" th:each="item : ${members}">
+        <span>Namn: <strong th:text="${item.name}"></strong></span> <br>
+        <span>E-post: <strong th:text="${item.email}"></strong></span> <br>
+
         </li>
       </ul>
     </div>

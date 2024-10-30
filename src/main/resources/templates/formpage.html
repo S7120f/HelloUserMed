@@ -10,6 +10,17 @@
 
   <body>
     <h1>Formusida</h1>
+    <a th:href="@{/}">Hem</a>
+    <a th:href="@{/memberpage}">Våra medlemar</a>
+    
+
+    <div>
+      <form method="post" th:action="@{/new-member}" th:object="${newMember}">
+        <input type="text" th:field="*{name}" placeholder="Member Name"/>
+        <input type="text" th:field="*{email}" placeholder="Member Email"/>        
+        <input type="submit" value="Lägg till medlem" />
+      </form>
+    </div>
   </body>
-  
+
 </html>
