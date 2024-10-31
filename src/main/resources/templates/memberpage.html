@@ -7,25 +7,38 @@
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
-<body>
-  <header>
-    <h1 th:text="${siteName}"></h1>
-    <a th:href="@{/}">Hem</a>
-    <a th:href="@{/formpage}">Formulär</a>
-  </header>
-    
+  <body>
+    <header>
+      <h1 th:text="${siteName}"></h1>
 
-  <main>
-    <h2>Våra medlemar</h2>
+      <nav>
+        <a th:href="@{/}">Hem</a>
+        <a th:href="@{/formpage}">Formulär</a>
+        <div id="adminFeatures" style="display: none">
+        <h2>Admin-funktioner</h2>
+        <ul>
+          <li th:each="item : ${members}">
+            <span>
+              <a th:href="@{/remove-item/{itemId}(itemId=${item.id})}">[X]</a> Namn: <strong th:text="${item.name}"></strong>
+            </span>
+          </li>
+        </ul>
+        <button onclick="logout()">Logga ut</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Våra medlmar</h2>
+    </main>
     <div>
       <ul>
-        <li th:id="${item.id}" th:each="item : ${members}">
-        <span> <a th:href="@{/remove-item/{itemId}(itemId=${item.id})}">[X]</a> Namn: <strong th:text="${item.name}"></strong></span> <br>
-        <span>E-post: <strong th:text="${item.email}"></strong></span> <br>
-        
+        <li th:each="item : ${members}">
+          <span> Namn: <strong th:text="${item.name}"></strong></span> <br>
+          <span>E-post: <strong th:text="${item.email}"></strong></span> <br>
         </li>
       </ul>
     </div>
-  </main>
-</body>
+    </main>
+  </body>
 </html>
