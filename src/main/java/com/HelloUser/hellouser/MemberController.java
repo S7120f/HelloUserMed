@@ -15,9 +15,9 @@ public class MemberController {
     public static final List<Member> members = new ArrayList<>();
     static {
         // Adding member to the list
-        members.add(new Member("Jonas", "jonas@hotmail.com", 0));
-        members.add(new Member("Elin", "Elin@hotmail.com", 1));
-        members.add(new Member("Axel", "Axel@hotmail.com", 2));
+        // members.add(new Member("Jonas", "jonas@hotmail.com", 0));
+        // members.add(new Member("Elin", "Elin@hotmail.com", 1));
+        // members.add(new Member("Axel", "Axel@hotmail.com", 2));
     }
 
     @GetMapping("/memberpage")
