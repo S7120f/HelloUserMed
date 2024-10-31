@@ -1,15 +1,16 @@
 function loginFunc(event) {
-  event.preventDefault();
+  event.preventDefault(); // prevent the form from submitting normally, which would relad the page
 
-  var user = document.getElementById("username").value // retrieve value username
-  var pass = document.getElementById("password").value // retrieve value password
+  // controll username and password before we sending the information
+  var user = document.getElementById("username").value; // retrieve value username
+  var pass = document.getElementById("password").value; // retrieve value password
   var result = document.getElementById("result");
 
-  // set username/password always to admim
+  // set username/password always to admim in localStorage
   localStorage.setItem("username", "admin");
   localStorage.setItem("password", "admin");
 
-  //retrieve stored value
+  //retrieve stored value from localStorage
   var storedUsername = localStorage.getItem("username");
   var storedPassword = localStorage.getItem("password");
 
@@ -17,39 +18,39 @@ function loginFunc(event) {
   if (user === "" || pass === "") {
     result.innerHTML = "Användarnamn och lösenord får inte vara tomma.";
   } else if (user !== storedUsername || pass !== storedPassword) {
-    result.innerHTML = "Du har angivet ett felaktigt användarnamn eller lösenord. Var vänligen och försök igen";
+    result.innerHTML =
+      "Du har angivet ett felaktigt användarnamn eller lösenord. Var vänligen och försök igen";
   } else {
     result.innerHTML = "Inloggad, Välkommen!";
-    localStorage.setItem("isLoggedIn", "true"); // sätt inloggningstatus
-    showAdminFeatures(); // visa funktioner för inloggade användare 
+    localStorage.setItem("isLoggedIn", "true"); // set login status
+    showAdminFeatures(); // show function for logged in admin
   }
 }
 
 function logout() {
-    localStorage.removeItem("isLoggedIn"); // ta bort inloggningsstatus
-    localStorage.removeItem("username"); // ta bort användarnamn
-    localStorage.removeItem("password"); // ta bort lösenord
-    hideAdminFeatures(); // dölj admin funktniomner
-    document.getElementById("result").innerHTML = "Du har loggat ut"
+  localStorage.removeItem("isLoggedIn"); // ta bort inloggningsstatus
+  localStorage.removeItem("username"); // ta bort användarnamn
+  localStorage.removeItem("password"); // ta bort lösenord
+  hideAdminFeatures(); // dölj admin funktniomner
+  document.getElementById("result").innerHTML = "Du har loggat ut";
 }
 
 function checkLoginStatus() {
-    const isLoggedIn = localStorage.getItem("isLoggedIn") == "true";
+  const isLoggedIn = localStorage.getItem("isLoggedIn") == "true";
 
-    if (isLoggedIn) {
-        showAdminFeatures();
-    } else {
-        hideAdminFeatures(); 
-    }
+  if (isLoggedIn) {
+    showAdminFeatures();
+  } else {
+    hideAdminFeatures();
+  }
 }
-
 
 function showAdminFeatures() {
-    document.getElementById("adminFeatures").style.display = "block"; // visa admin-funktioner
+  document.getElementById("adminFeatures").style.display = "block"; // visa admin-funktioner
 }
 
-function hideAdminFeatures(){
-    document.getElementById("adminFeatures").style.display = "none"; // dölj admin-funtkioner
+function hideAdminFeatures() {
+  document.getElementById("adminFeatures").style.display = "none"; // dölj admin-funtkioner
 }
 
 // anropa chechLoginStatus vid sidladdning

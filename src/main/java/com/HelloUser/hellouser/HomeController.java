@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
 //indikerar att klassen är en controller som hanterar webbförfrågningar
 @Controller
 public class HomeController {

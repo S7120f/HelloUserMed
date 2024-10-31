@@ -38,7 +38,7 @@ public class Member {
 
     @Override
     public String toString() {
-        return String.format("[name=%s, email=%s, id=%s]", name, email , id);
+        return String.format("[name=%s, email=%s, id=%s]", name, email, id);
     }
 
 }

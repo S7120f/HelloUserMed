@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class FormController {
@@ -18,17 +19,20 @@ public class FormController {
     }
 
     @PostMapping("/new-member")
-    public String newMember(@RequestParam String name, @RequestParam String email, Model model) {
+    public String newMember(@RequestParam String name, @RequestParam String email, Model model,
+            RedirectAttributes redirectAttributes) {
 
-        System.out.println("new member "+ "Namn: " + name + " Email: " + email);
-        // create a new member object with a unique ID based on the sixe of the member list 
-        Member newMember =  new Member(name, email, MemberController.members.size() + 1);
-        //add the new member to member list
+        System.out.println("new member " + "Namn: " + name + " Email: " + email);
+        // create a new member object with a unique ID based on the sixe of the member
+        // list
+        Member newMember = new Member(name, email, MemberController.members.size() + 1);
+        // add the new member to member list
         MemberController.members.add(newMember);
-        // skapa en ny member 
+
+        redirectAttributes.addFlashAttribute("message", "Ny medlem tillagd " + name + " (" + email + ") ");
 
         System.out.println("Ny Medlem tillagd " + newMember);
         return "redirect:/formpage";
     }
-    
+
 }

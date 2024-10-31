@@ -3,42 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <title>Medlemssida</title>
+    <link th:rel="stylesheet" th:href="@{/style.css}" />
+    <script th:src="@{/script.js}" defer></script>
   </head>
   <body>
     <header>
-      <h1 th:text="${siteName}"></h1>
-
+      <h1 th:text="${siteName}">Våra medlemmar</h1>
       <nav>
-        <a th:href="@{/}">Hem</a>
-        <a th:href="@{/formpage}">Formulär</a>
-        <div id="adminFeatures" style="display: none">
-        <h2>Admin-funktioner</h2>
         <ul>
-          <li th:each="item : ${members}">
-            <span>
-              <a th:href="@{/remove-item/{itemId}(itemId=${item.id})}">[X]</a> Namn: <strong th:text="${item.name}"></strong>
-            </span>
-          </li>
+          <li><a th:href="@{/}">Hem</a></li>
+          <li><a th:href="@{/formpage}">Formulär</a></li>
         </ul>
-        <button onclick="logout()">Logga ut</button>
-        </div>
       </nav>
     </header>
 
     <main>
       <h2>Våra medlmar</h2>
-    </main>
-    <div>
+      <div id="adminFeatures" style="display: none">
+        <h2>Admin-funktioner</h2>
+        <ul>
+          <li th:each="item : ${members}">
+            <span>
+              <a th:href="@{/remove-item/{itemId}(itemId=${item.id})}">[X]</a>
+              Namn: <strong th:text="${item.name}"></strong>
+            </span>
+          </li>
+        </ul>
+        <button onclick="logout()">Logga ut</button>
+      </div>
+
       <ul>
         <li th:each="item : ${members}">
-          <span> Namn: <strong th:text="${item.name}"></strong></span> <br>
-          <span>E-post: <strong th:text="${item.email}"></strong></span> <br>
+          <span> Namn: <strong th:text="${item.name}"></strong></span> <br />
+          <span>E-post: <strong th:text="${item.email}"></strong></span>
+          <br />
         </li>
       </ul>
-    </div>
     </main>
   </body>
 </html>

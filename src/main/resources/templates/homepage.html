@@ -3,37 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Logga in</title>
     <link th:rel="stylesheet" th:href="@{/style.css}" />
     <script th:src="@{/script.js}" defer></script>
   </head>
   <body>
     <header>
-      <h1 th:text="${homePageName}"></h1>
-
-      <div class="container">
-        <form onsubmit="loginFunc(event)">
-        <div>
-          <label for="username">Username</label>
-          <input type="text" name="username" id="username" required/>
-
-          <label for="password">Password</label>
-          <input type="password" name="password" id="password" required/>
-
-          <button type="submit">Login</button>
-          <button onclick="logout()">Logga ut</button>
-          <p id="result">Välkommen, Logga in...</p>
-          
-        </div>
-      </div>
-      </form>
-
+      <h1 th:text="${homePageName}">Välkommen</h1>
       <nav>
         <ul>
-          <a th:href="@{/memberpage}">Våra medlemar</a>
-          <a th:href="@{/formpage}">Formulär</a>
+          <li><a th:href="@{/memberpage}">Våra medlemar</a></li>
+          <li><a th:href="@{/formpage}">Formulär</a></li>
         </ul>
       </nav>
     </header>
+
+    <main>
+      <div class="login-container">
+        <form onsubmit="loginFunc(event)">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" required />
+
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" required />
+
+          <button type="submit">Login</button>
+          <button id="adminFeatures" style="display: none" onclick="logout()">
+            Logga ut
+          </button>
+          <p id="result">Välkommen, Logga in...</p>
+        </form>
+      </div>
+    </main>
   </body>
 </html>
