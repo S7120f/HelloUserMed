@@ -33,11 +33,11 @@ nav a {
 
 .login-container {
     background: #ffffff;
-    padding: 20px;
+    padding:60px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 50px auto;
+    max-width: 350px;
+    margin:50px auto;
 }
 
 h1, h2 {

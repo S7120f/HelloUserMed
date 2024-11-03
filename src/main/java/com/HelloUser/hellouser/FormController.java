@@ -12,19 +12,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class FormController {
 
-    @GetMapping("/formpage")
-    public String formPage(Model model) {
+    @GetMapping("/formpage") // Handles GET requests to the root directory
+    public String formPage(Model model) { // Adds attributes to be made available in teh view
+        // adding a new member-object to the model with the name newMember
         model.addAttribute("newMember", new Member(null, null, 0));
         return "formpage";
     }
 
-    @PostMapping("/new-member")
+    @PostMapping("/new-member") 
     public String newMember(@RequestParam String name, @RequestParam String email, Model model,
             RedirectAttributes redirectAttributes) {
 
         System.out.println("new member " + "Namn: " + name + " Email: " + email);
-        // create a new member object with a unique ID based on the sixe of the member
-        // list
+        // create a new member object with a unique ID based on size of member list
         Member newMember = new Member(name, email, MemberController.members.size() + 1);
         // add the new member to member list
         MemberController.members.add(newMember);

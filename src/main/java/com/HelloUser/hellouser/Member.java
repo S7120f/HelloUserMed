@@ -6,6 +6,8 @@ public class Member {
     private String email;
     private Integer id;
 
+
+    // constructor  
     public Member(String name, String email, Integer id) {
         this.name = name;
         this.email = email;

@@ -4,12 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-//indikerar att klassen är en controller som hanterar webbförfrågningar
 @Controller
 public class HomeController {
 
-    @GetMapping("/") // hanterar get-förfrågningar till rotkatalogen
-    public String homePage(Model model) { // Lägger till attribut som ska göras tillgänliga i vyn
+    @GetMapping("/") // Handles GET requests to the root directory
+    public String homePage(Model model) { // Adds attributes to be made available in teh view
         model.addAttribute("homePageName", "Medlemssida!");
         System.out.println("Homepage");
         return "homepage";

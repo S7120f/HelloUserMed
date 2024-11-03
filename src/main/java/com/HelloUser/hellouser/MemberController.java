@@ -13,15 +13,9 @@ public class MemberController {
 
     // New arraylist of members
     public static final List<Member> members = new ArrayList<>();
-    static {
-        // Adding member to the list
-        // members.add(new Member("Jonas", "jonas@hotmail.com", 0));
-        // members.add(new Member("Elin", "Elin@hotmail.com", 1));
-        // members.add(new Member("Axel", "Axel@hotmail.com", 2));
-    }
 
-    @GetMapping("/memberpage")
-    public String memberPage(Model model) {
+    @GetMapping("/memberpage") // Handles GET requests to the root directory
+    public String memberPage(Model model) { // Adds attributes to be made available in teh view
         // We sending a list with member to the view URL.
         model.addAttribute("members", members);
         System.out.println("Memberpage" + members);

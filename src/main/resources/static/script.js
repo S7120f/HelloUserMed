@@ -28,30 +28,33 @@ function loginFunc(event) {
 }
 
 function logout() {
-  localStorage.removeItem("isLoggedIn"); // ta bort inloggningsstatus
-  localStorage.removeItem("username"); // ta bort användarnamn
-  localStorage.removeItem("password"); // ta bort lösenord
-  hideAdminFeatures(); // dölj admin funktniomner
+  localStorage.removeItem("isLoggedIn"); // remove login status
+  localStorage.removeItem("username"); // remove username
+  localStorage.removeItem("password"); // remove password
+  hideAdminFeatures(); // hide admin-function
   document.getElementById("result").innerHTML = "Du har loggat ut";
 }
 
 function checkLoginStatus() {
+  // retrieve the login satsu from localStorage
   const isLoggedIn = localStorage.getItem("isLoggedIn") == "true";
 
+  //if the user is loged inm show admin features
   if (isLoggedIn) {
     showAdminFeatures();
   } else {
+    //if the user is not logged in, hide admin features
     hideAdminFeatures();
   }
 }
 
 function showAdminFeatures() {
-  document.getElementById("adminFeatures").style.display = "block"; // visa admin-funktioner
+  document.getElementById("adminFeatures").style.display = "block"; // show admin-function
 }
 
 function hideAdminFeatures() {
-  document.getElementById("adminFeatures").style.display = "none"; // dölj admin-funtkioner
+  document.getElementById("adminFeatures").style.display = "none"; // hide admin-function
 }
 
-// anropa chechLoginStatus vid sidladdning
+// call checkLoginStatus on page laod
 document.addEventListener("DOMContentLoaded", checkLoginStatus);
