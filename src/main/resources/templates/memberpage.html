@@ -23,7 +23,7 @@
       <div id="adminFeatures" style="display: none">
         <h2>Admin-funktioner</h2>
         <ul>
-          <li th:each="item : ${members}">
+          <li th:id="${item.id}" th:each="item : ${members}">
             <span>
               <a th:href="@{/remove-item/{itemId}(itemId=${item.id})}">[X]</a>
               Namn: <strong th:text="${item.name}"></strong>

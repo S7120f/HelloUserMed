@@ -13,6 +13,8 @@ public class MemberController {
 
     // New arraylist of members
     public static final List<Member> members = new ArrayList<>();
+    //Static variable to keep track of the last genereated ID
+    private static int lastID = 0;
 
     @GetMapping("/memberpage") // Handles GET requests to the root directory
     public String memberPage(Model model) { // Adds attributes to be made available in teh view
@@ -28,6 +30,11 @@ public class MemberController {
         // Remove the member from the list if its ID matches the specified itemID
         members.removeIf(item -> item.getId() == itemId);
         return "redirect:/memberpage";
+    }
+
+    //method to generate a quique ID
+    public static int generateUniqueId(){
+        return ++lastID;
     }
 
 }

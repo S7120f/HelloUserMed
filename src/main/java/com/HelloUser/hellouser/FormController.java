@@ -25,7 +25,8 @@ public class FormController {
 
         System.out.println("new member " + "Namn: " + name + " Email: " + email);
         // create a new member object with a unique ID based on size of member list
-        Member newMember = new Member(name, email, MemberController.members.size() + 1);
+        Member newMember = new Member(name, email, MemberController.generateUniqueId());
+        // Member newMember = new Member(name, email, MemberController.members.size() + 1);
         // add the new member to member list
         MemberController.members.add(newMember);
 
